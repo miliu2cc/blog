@@ -1,16 +1,51 @@
 # The URL the site will be built for
 base_url = "https://example.com"
+title = "我的博客"
+description = "记录一些东西。"
 
+theme = "axetrine"
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
+generate_feeds = true
+feed_filenames = ["atom.xml"]
 
+default_language = "zh-Hans" # 中文站
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = false
 
+taxonomies = [
+    { name = "tags", feed = true },
+    { name = "categories", feed = true },
+]
+
 [markdown]
+smart_punctuation = true     # 中文标点更自然
+github_alerts = true
 
 [markdown.highlighting]
 theme = "catppuccin-mocha"
 
 [extra]
 # Put all your custom variables here
+accent_color = "purple"      # 主题色：red/orange/yellow/green/blue/purple，或 "hsl(270, 50%, 60%)"
+date_format = "%Y 年 %m 月 %d 日"
+date_format_long = "%Y 年 %m 月 %d 日 %R (%Z)"
+date_locale = "zh_CN"        # 月份名等本地化
+timezone = "Asia/Shanghai"
+
+[extra.meta]
+favicon = false              # 没有 favicon 文件时先关掉，避免用主题默认图标
+
+[extra.nav]
+links = [
+    { url = "@/blog/_index.md", name = "博客", icon = "newspaper" },
+    # 以后可以继续加：
+    # { url = "https://github.com/yourname", name = "GitHub", icon = "github-logo" },
+]
+
+[extra.footer]
+copyright = "© $YEAR 我的博客"   # $YEAR 会自动替换成当前年份
+show_powered_by = true
+socials = [
+    { url = "https://github.com/yourname", icon = "github" },
+]
