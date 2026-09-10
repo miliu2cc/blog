@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://example.com"
+base_url = "https://blog-7ia.pages.dev" #先用cf域名
 title = "我的博客"
 description = "记录一些东西。"
 
