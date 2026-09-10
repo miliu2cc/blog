@@ -8,10 +8,17 @@ theme = "axetrine"
 compile_sass = true
 generate_feeds = true
 feed_filenames = ["atom.xml"]
+build_search_index = false
 
 default_language = "zh-Hans" # 中文站
-# Whether to build a search index to be used later on by a JavaScript library
-build_search_index = false
+
+[languages.en]
+title = "My Blog"
+description = "Just notes."
+build_search_index = true        # 英文可以建索引，中文不行
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+
 
 taxonomies = [
     { name = "tags", feed = true },
@@ -33,6 +40,11 @@ date_format_long = "%Y 年 %m 月 %d 日 %R (%Z)"
 date_locale = "zh_CN"        # 月份名等本地化
 timezone = "Asia/Shanghai"
 
+[extra.en]
+date_format = "%b %d, %Y"
+date_format_long = "%B %d, %Y, %R (%Z)"
+date_locale = "en_US"
+
 [extra.meta]
 favicon = false              # 没有 favicon 文件时先关掉，避免用主题默认图标
 
@@ -43,9 +55,17 @@ links = [
     # { url = "https://github.com/yourname", name = "GitHub", icon = "github-logo" },
 ]
 
+[extra.nav.en]
+links = [
+    { url = "@/blog/_index.md", name = "Blog", icon = "newspaper" },
+]
+
 [extra.footer]
 copyright = "© $YEAR 我的博客"   # $YEAR 会自动替换成当前年份
 show_powered_by = true
 socials = [
     { url = "https://github.com/yourname", icon = "github" },
 ]
+
+[extra.footer.en]
+copyright = "© $YEAR My Blog"
