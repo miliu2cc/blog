@@ -1,3 +1,6 @@
 [submodule "themes/axetrine"]
 	path = themes/axetrine
 	url = https://codeberg.org/Axenide/Axetrine.git
+	# 跟随上游 dev 分支（dev = main + 1 个提交，即 github_grid 的 Tera v2 修复）
+	# 跟新上游：git submodule update --remote themes/axetrine
+	branch = dev

@@ -40,10 +40,20 @@ date_format_long = "%Y 年 %m 月 %d 日 %R (%Z)"
 date_locale = "zh_CN"        # 月份名等本地化
 timezone = "Asia/Shanghai"
 
+# nanolog 列表页的「编辑」链接会指向 <source_url>/edit/main/content/<文件>，按需改成你的仓库
+source_url = "https://github.com/miliu2cc/blog"
+
 [extra.en]
 date_format = "%b %d, %Y"
 date_format_long = "%B %d, %Y, %R (%Z)"
 date_locale = "en_US"
+
+# 默认语言是 zh-Hans：桌面端用不到这个表，但主题在某些路径下会读 config.extra[lang]，
+# 补上可以避免非默认语言分支报 "Field `date_format_long` is not defined"。
+[extra.zh-Hans]
+date_format = "%Y 年 %m 月 %d 日"
+date_format_long = "%Y 年 %m 月 %d 日 %R (%Z)"
+date_locale = "zh_CN"
 
 [extra.meta]
 favicon = false              # 没有 favicon 文件时先关掉，避免用主题默认图标
@@ -51,6 +61,8 @@ favicon = false              # 没有 favicon 文件时先关掉，避免用主�
 [extra.nav]
 links = [
     { url = "@/blog/_index.md", name = "博客", icon = "newspaper" },
+    { url = "@/nanolog/_index.md", name = "随手记", icon = "note-pencil" },
+    { url = "@/projects/_index.md", name = "项目", icon = "cube" },
     # 以后可以继续加：
     # { url = "https://github.com/yourname", name = "GitHub", icon = "github-logo" },
 ]
@@ -58,6 +70,8 @@ links = [
 [extra.nav.en]
 links = [
     { url = "@/blog/_index.md", name = "Blog", icon = "newspaper" },
+    { url = "@/nanolog/_index.md", name = "Nanolog", icon = "note-pencil" },
+    { url = "@/projects/_index.md", name = "Projects", icon = "cube" },
 ]
 
 [extra.footer]

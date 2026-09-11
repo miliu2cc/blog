@@ -1,0 +1,38 @@
+{% component online(type: string, section) %}
+{%- set items = [] -%}
+{%- if type == "contacts" -%}
+	{%- set items = section.extra.contacts | default(value=[]) -%}
+{%- elif type == "socials" -%}
+	{%- set items = section.extra.socials | default(value=[]) -%}
+{%- elif type == "forges" -%}
+	{%- set items = section.extra.forges | default(value=[]) -%}
+{%- endif -%}
+
+<ul class="online-list">
+	{%- for item in items -%}
+		{%- set icon = load_data(path="icons/phosphor/" ~ item.icon ~ ".svg", required=false) -%}
+		{%- if not icon -%}
+			{%- set icon = load_data(path="themes/axetrine/icons/phosphor/" ~ item.icon ~ ".svg", required=false) -%}
+		{%- endif -%}
+		<li>
+			<a href="{{ item.url }}" {% if type != "contacts" %}target="_blank" rel="noopener"{% endif %}>
+				<i class="icon online-icon {{ item.icon }}" style="--icon: url('data:image/svg+xml,{{ icon | urlencode }}');" aria-hidden="true"></i>
+				{{ item.name }}
+			</a>
+		</li>
+	{%- endfor -%}
+</ul>
+
+<style>
+	.online-list .online-icon {
+		font-size: 1.5rem;
+		margin-inline-end: 0.75rem;
+		flex-shrink: 0;
+		transition: transform 0.3s ease;
+	}
+
+	.online-list a:hover .online-icon {
+		transform: rotate(-15deg);
+	}
+</style>
+{% endcomponent online %}
